@@ -1,0 +1,204 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+:root {
+    --primary: #ff61a6;
+    --secondary: #87ceeb;
+    --tertiary: #00ced1;
+    --background: #fff5e6;
+    --text: #333;
+  }
+  * {
+    @apply box-border m-0 p-0;
+  }
+  body {
+    @apply bg-[color:var(--background)] text-[color:var(--text)] leading-[1.6] text-lg;
+    font-family: "Baloo 2", cursive;
+  }
+  .container {
+    @apply w-full max-w-[1200px] mx-auto my-0 px-5 py-0;
+  }
+  nav {
+    @apply bg-[color:var(--secondary)] sticky z-[100] shadow-[0_2px_5px_rgba(0,0,0,0.1)] p-4 top-0;
+  }
+  .nav-container {
+    @apply flex justify-between items-center;
+  }
+  .logo {
+    @apply text-2xl text-[color:var(--text)] no-underline transition-[color] duration-[0.3s] ease-[ease] hover:text-[color:var(--primary)];
+    font-family: "Pacifico", cursive;
+  }
+  .nav-menu {
+    @apply flex list-none;
+  }
+  .nav-item {
+    @apply ml-6;
+  }
+  .nav-link {
+    @apply text-[color:var(--text)] no-underline font-[bold] transition-[color] duration-[0.3s] ease-[ease] text-[0.9rem] hover:text-[color:var(--primary)];
+  }
+  .hamburger {
+    @apply hidden cursor-pointer;
+  }
+  .bar {
+    @apply block w-[25px] h-[3px] transition-all duration-[0.3s] ease-[ease-in-out] bg-[color:var(--text)] mx-auto my-[5px];
+  }
+  .hero-section {
+    @apply relative h-[calc(100vh_-_60px)] flex items-center justify-center overflow-hidden;
+  }
+  .hero-image {
+    @apply absolute w-full h-full object-cover z-[-1] left-0 top-0;
+  }
+  .hero-content {
+    @apply text-center text-[white] z-[1] bg-[rgba(0,0,0,0.7)] p-8 rounded-[15px];
+  }
+  .hero-content h1 {
+    @apply text-[2.5rem] mb-4;
+    font-family: "Pacifico", cursive;
+  }
+  .hero-content p {
+    @apply text-[1.2rem] mb-8;
+  }
+  .cta-button {
+    @apply bg-[color:var(--primary)] text-[white] text-base cursor-pointer px-6 py-[0.8rem] rounded-[50px] border-[none] hover:bg-[color:var(--tertiary)] hover:scale-105;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  section {
+    @apply px-0 py-16;
+  }
+  .section-title {
+    @apply text-center text-[color:var(--primary)] text-[2.5rem] mb-8;
+  }
+  .product-grid {
+    @apply grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8;
+  }
+  .product-card {
+    @apply bg-[white] overflow-hidden shadow-[0_4px_6px_rgba(0,0,0,0.1)] transition-transform duration-[0.3s] ease-[ease] rounded-[15px] hover:translate-y-[-5px];
+  }
+  .product-image {
+    @apply w-full h-[200px] object-cover;
+  }
+  .product-info {
+    @apply p-4;
+  }
+  .product-name {
+    @apply text-[1.2rem] mb-2;
+  }
+  .product-price {
+    @apply font-[normal] opacity-80 text-[0.9rem] text-[color:var(--primary)];
+    text-wrap: balance;
+  }
+  .about-content {
+    @apply flex items-center gap-8;
+  }
+  .about-image {
+    @apply flex-1 overflow-hidden rounded-[15px];
+  }
+  .about-image img {
+    @apply w-full h-auto;
+  }
+  .about-text {
+    @apply flex-1;
+  }
+  .gallery {
+    @apply grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4;
+  }
+  .gallery-item {
+    @apply overflow-hidden transition-transform duration-[0.3s] ease-[ease] rounded-[10px] hover:scale-105;
+  }
+  .gallery-item img {
+    @apply w-full h-auto;
+  }
+  footer {
+    @apply bg-[color:var(--secondary)] text-[color:var(--text)] mt-8 px-0 py-8;
+  }
+  .footer-content {
+    @apply flex justify-between flex-wrap;
+  }
+  .footer-section {
+    @apply flex-1 min-w-[300px] mb-8 px-4 py-0;
+  }
+  .footer-section h3 {
+    @apply text-[color:var(--primary)] text-2xl mb-4;
+  }
+  .map-container {
+    @apply h-[300px] overflow-hidden mb-4 rounded-[15px];
+  }
+  .contact-form {
+    @apply flex flex-col;
+  }
+  .form-group {
+    @apply mb-4;
+  }
+  .form-group label {
+    @apply block mb-2;
+  }
+  .form-group input,
+  .form-group textarea {
+    @apply w-full border p-2 rounded-[5px] border-solid border-[#ccc];
+  }
+  .form-group textarea {
+    @apply h-[100px];
+  }
+  .submit-button {
+    @apply bg-[color:var(--primary)] text-[white] text-base cursor-pointer transition-[background-color] duration-[0.3s] ease-[ease] self-start px-6 py-[0.8rem] rounded-[50px] border-[none] hover:bg-[color:var(--tertiary)];
+  }
+  .copyright {
+    @apply text-center border-t-[color:var(--text)] mt-8 pt-4 border-t border-solid;
+  }
+  
+  /* Estilos para mejorar la accesibilidad */
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus {
+    @apply outline-offset-2;
+    outline: 3px solid var(--tertiary);
+  }
+  .skip-link {
+    @apply absolute text-[white] z-[200] p-2 left-0 -top-10 focus:top-0;
+  
+    /* background: var(--primary); */
+  }
+  p {
+    text-wrap: balance;
+    padding-block: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    .nav-menu {
+      @apply fixed flex-col bg-[color:var(--secondary)] w-full text-center transition-[0.3s] shadow-[0_10px_27px_rgba(0,0,0,0.05)] rounded-[10px] -left-full top-20;
+    }
+    .nav-menu.active {
+      @apply left-0;
+    }
+    .nav-item {
+      @apply mx-0 my-10;
+    }
+    .hamburger {
+      @apply block;
+    }
+    .hamburger.active .bar:nth-child(2) {
+      @apply opacity-0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+      @apply translate-y-2 rotate-45;
+    }
+    .hamburger.active .bar:nth-child(3) {
+      @apply -translate-y-2 -rotate-45;
+    }
+    .hero-content h1 {
+      @apply text-[2.5rem];
+    }
+    .hero-content p {
+      @apply text-2xl;
+    }
+    .about-content {
+      @apply flex-col;
+    }
+    .footer-section {
+      @apply flex-[100%];
+    }
+  }
+  
