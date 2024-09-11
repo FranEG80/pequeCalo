@@ -23,8 +23,8 @@
       <ul class="nav-menu">
         <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
         <li class="nav-item"><a href="#productos" class="nav-link">Productos</a></li>
-        <li class="nav-item"><a href="#sobre-nosotros" class="nav-link">Sobre Nosotros</a></li>
         <li class="nav-item"><a href="#gallery" class="nav-link">Galería</a></li>
+        <li class="nav-item"><a href="#sobre-nosotros" class="nav-link">Sobre Nosotros</a></li>
       </ul>
       <div class="hamburger">
         <span class="bar"></span>
@@ -88,7 +88,6 @@
         </div>
       </div>
     </section>
-
 
     <section id="gallery">
       <div class="container">
@@ -377,7 +376,7 @@
       </div>
       <div class="footer-section">
         <h2 class="section-title">Contacto</h2>
-        <form class="contact-form" action="mailto:example@example.org" method="get" enctype="text/plain">
+        <form class="contact-form" onsubmit="handleSubmit" method="get" enctype="text/plain">
           <div class="form-group">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required aria-required="true">
@@ -405,6 +404,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
   <script id="principal">
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      const mailtoLink = `mailto:example@example.org?subject=${encodeURIComponent(`Email de contacto de ${data.name}`)}&body=${encodeURIComponent(data.message)}&from=${encodeURIComponent(data.email)}`
+      window.location.href = mailtoLink
+      console.log(data);
+      alert(JSON.stringify(data, null, 2));
+    }
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('.product-card', {
