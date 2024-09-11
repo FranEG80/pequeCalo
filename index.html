@@ -409,8 +409,9 @@
       event.preventDefault();
       const form = event.target;
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-      const mailtoLink = `mailto:example@example.org?subject=${encodeURIComponent(`Email de contacto de ${data.name}`)}&body=${encodeURIComponent(data.message)}&from=${encodeURIComponent(data.email)}`
+      let data = Object.fromEntries(formData);
+      data.message = `**RESPONDER A:** ${data.email}\n\n**MENSAJE:**\n${data.message}`;
+      const mailtoLink = `mailto:example@example.org?subject=${encodeURIComponent(`Email de contacto de ${data.name}`)}&body=${encodeURIComponent(data.message)}`
       window.location.href = mailtoLink
       console.log(data);
       alert(JSON.stringify(data, null, 2));
