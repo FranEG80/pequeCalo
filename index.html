@@ -583,7 +583,18 @@
 
   <script id="script-particles">
     const candyTypes = ['lollipop', 'gumdrop', 'candy-cane', 'jelly-bean', 'gummy-bear', 'sprinkle'];
-    const candyCount = 30;
+    const candyCount = 100;
+
+    function destroyCandies(limitCandiesOnScreen = 200) {
+      const candies = document.querySelectorAll('.candy');
+      if (candies.length > limitCandiesOnScreen) {
+        // delete the first candies at limit candies on screen
+        for (let i = 0; i < candies.length - limitCandiesOnScreen; i++) {
+          candies[i].remove();
+        }
+      }
+      
+    }
 
     function createCandy(initialY = null) {
       const candy = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -612,6 +623,8 @@
       candy.addEventListener('animationiteration', () => {
         candy.style.left = `${Math.random() * 100}vw`;
       });
+
+      destroyCandies();
     }
 
     function startCandyRain(withInitialCandies = false) {
